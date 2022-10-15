@@ -1,0 +1,218 @@
+---
+import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="SlashGo | A modern ">
+	<main class="m-auto p-4 max-w-4xl bg-gray-50 border-1 border rounded-lg">
+		<div class="text-center p-4">
+			<div class="font-bold text-6xl">
+				<span class="transition duration-300 hero">go</span>/<span class="typewrite" data-period="1000" 
+				data-type="[ &quot;docs&quot;, &quot;onboarding&quot;, &quot;issue/1337&quot;, &quot;my/calendar&quot;, 
+				&quot;payroll/2022&quot;, &quot;okrs/q2&quot;, &quot;payroll&quot;, &quot;newmeet&quot;, &quot;jira&quot;, &quot;gdocs&quot;, 
+				&quot;releases&quot;, &quot;my/inbox&quot;, &quot;templates&quot;, &quot;designs&quot;, &quot;friday-fun&quot;, 
+				&quot;lunchmenu&quot;, &quot;my/notes&quot;]"></span><span class="text-slate-200 text-5xl blinking-cursor">|</span></div>
+			
+			<div class="text-center font-bold text-3xl m-auto pt-8 pb-4 max-w-2xl">A modern way to share and collaborate on knowledge within your organization</div>
+			<div class="text-center text-sm m-auto max-w-2xl mb-8">Powered by memorable shortlinks || Customizable for your teams || Maximise personal productivity </div>	
+		</div>
+		<div>
+			<div id="features" class="font-bold flex justify-center text-2xl text-grey-600 mb-4">Features</div>
+			<ul role="list" class="grid grid-cols-2 gap-1 mb-8">
+				<Card
+					title="🌏 Available Everywhere"
+					body="No matter the browser you use, SlashGo is always just a click away!"
+				/>
+				<Card
+					title="💻 Works with any Webapp"
+					body="Calendar, Outlook, Confluence, Trello, Salesforce, Zoom... the list goes on!"
+				/>
+				<Card
+					title="⚙️ Customizable"
+					body="Keyword triggers to default behaviour, tweak everything to your team's workflows"
+				/>
+				<Card
+					title="❤️ Open Source by Default"
+					body="Built by the community, for the community... With a self-hosting option as well!"
+				/>
+			</ul>
+		</div>
+		<div class="mb-8">
+		  <div id="pricing" class="font-bold flex justify-center text-2xl text-grey-600 mb-4">Pricing</div>
+		    <div class="grid grid-cols-2 gap-1 mb-8">
+			  <div class="text-center m-auto max-w-xs">
+				<div class="text-xl font-bold">Self Hosting</div>
+				<div class="text-xl">Always 100% free!</div>
+				<div class="text-sm">Host your own <a class="text-red-500 hover:text-red-800" href="https://github.com/Slash-Go/SlashGoServer">SlashGo-Server</a>
+				and use any SlashGo Extension with your own server!</div>
+				<div class="text-sm mt-2"><a class="text-red-500 hover:text-red-800" href="#">Self-Hosting Guide</a></div>
+			  </div>
+			  <div class="text-center font-bold">
+				<div class="text-xl">SlashGo SaaS</div>
+				<div class="text-sm mt-4">Coming Soon!</div>
+			  </div>
+		  </div>
+		</div>
+		<div class="mb-8">
+			<div id="downloads" class="font-bold flex justify-center text-2xl text-grey-600">Browser Extensions</div>
+			<div class="text-center">Choose your Browser</div>
+			<div class="flex justify-center mt-4">
+				<img width="48px" src="/chrome.png">
+				<img width="48px" src="/edge.png">
+				<img width="48px" src="/chromium.png">
+				<img width="48px" src="/safari.png">
+				<img width="48px" src="/brave.png">
+				<a href="javascript:alert('Firefox Support Coming Soon!')">
+					<img width="48px" src="/firefox.png">
+				</a> 
+			</div>
+		</div>
+		<div>
+			<div id="downloads" class="font-bold flex justify-center text-2xl text-grey-600">Issues? Ideas?</div>
+			<div class="text-center mt-2"><a class="text-red-600" href="https://github.com/Slash-Go/SlashGoServer/issues	">Let us know!</a></div>
+		</div>		
+		<!-- <div>
+			<div class="font-bold flex justify-center text-2xl text-grey-600 mb-4">How it Works</div>
+			<p class="bg-white rounded p-2 m-2 border border-solid">
+
+				<span class="text-[#7c3aed] font-bold">Code Challenge:</span> Tweak the "Welcome to Astro" message above.
+		</p>
+		</div>-->
+	</main>
+
+	<script> 
+	let loopNum: number, toRotate: Array<string>, el: Element ,period: number, txt: string, isDeleting: boolean;
+	let TxtType = (elem: Element , toRotate:Array<string>, period: number) => {
+        toRotate = toRotate;
+        el = elem;
+        loopNum = 0;
+        period = 1000;
+        txt = '';
+		isDeleting = false;
+        tick();
+    };
+
+	let heroIndex: number = 1
+	let heroes: Array<string> = ["go", "fb", "our", "o", "int", "team"];
+	const tickHero = () => {
+		let heroElem = document.getElementsByClassName('hero')[0];
+		//@ts-ignore
+		heroElem.style.opacity = 0;
+		setTimeout(() => {
+			//@ts-ignore
+			heroElem.style.opacity = 1;
+			heroElem.innerHTML =  heroes[heroIndex++];
+			if(heroIndex == heroes.length) {
+				heroIndex = 0;
+			}
+		}, 500)
+	}
+
+    const tick = () => {
+        let i: number = loopNum % toRotate.length;
+        let fullTxt = toRotate[i];
+
+        if (isDeleting) {
+        txt = fullTxt.substring(0, txt.length - 1);
+        } else {
+        txt = fullTxt.substring(0, txt.length + 1);
+        }
+
+        el.innerHTML = '<span class="text-red-500 bold">'+txt+'</span>';
+
+        let delta = 200 - Math.random() * 100;
+
+        if (isDeleting) { delta /= 2; }
+
+        if (!isDeleting && txt === fullTxt) {
+        delta = period;
+        isDeleting = true;
+        } else if (isDeleting && txt === '') {
+        isDeleting = false;
+		tickHero();
+        loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+         tick();
+
+        }, delta);
+    };
+
+    window.onload = function() {
+        let elements = document.getElementsByClassName('typewrite');
+        for (let i=0; i< elements.length; i++) {
+        	toRotate = JSON.parse(elements[i].getAttribute('data-type')!);
+            period = parseInt(elements[i].getAttribute('data-period')!);
+            if (toRotate) {
+              TxtType(elements[i], toRotate, period);
+            }
+        }
+    };
+	</script>
+</Layout>
+
+<style is:inline>
+.blinking-cursor {
+  font-weight: bold;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+	opacity: 1;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>

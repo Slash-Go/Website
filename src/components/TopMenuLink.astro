@@ -1,0 +1,10 @@
+---
+export interface Props {
+	active: boolean;
+    text: string;
+    url: string;
+}
+
+const { active, text, url } = Astro.props;
+---
+<a class={active ? 'ml-4 float-left text-black text-center p-2 text-lg rounded text-white bg-red-500': 'ml-4 hover:bg-slate-200 hover:text-black float-left text-black text-center p-2 text-lg rounded'} href={url}>{text}</a>
