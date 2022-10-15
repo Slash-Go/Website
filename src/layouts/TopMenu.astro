@@ -1,20 +1,26 @@
 ---
 import TopMenuLink from "../components/TopMenuLink.astro";
-
 ---
 
 <div class="background-slate-200 p-2">
-	<div class="w-full flex justify-center">
-	<div>
-		<a href="https://slashgo.link" class="float-left text-lg font-bold"><img width="300px" src="/slashgo_header.png"/></a>
-</div></div>
-	<div class="w-full flex justify-center">
-	  <TopMenuLink active={true} text="home" url="#"/>
-	  <TopMenuLink active={false} text="features" url="#features"/>
-	  <TopMenuLink active={false} text="pricing" url="#pricing"/>
-	  <TopMenuLink active={false} text="downloads" url="#downloads"/>
-	  <div class="ml-1 pt-3 pb-3 font-bold select-none"> // </div>
-	  <TopMenuLink active={false} text="github" url="https://github.com/Slash-Go"/>
-	  <TopMenuLink active={false} text="docs" url="https://docs.slashgo.link"/>
-	</div>
-</div> 
+  <div class="w-full flex justify-center">
+    <div>
+      <a href="https://slashgo.link" class="float-left text-lg font-bold"
+        ><img width="300px" src="/slashgo_header.png" />
+      </a>
+    </div>
+  </div>
+  <div class="w-full flex justify-center">
+    <TopMenuLink active={true} text="home" url="#" />
+    <TopMenuLink active={false} text="features" url="#features" />
+    <TopMenuLink active={false} text="pricing" url="#pricing" />
+    <TopMenuLink active={false} text="downloads" url="#downloads" />
+    <div class="ml-1 pt-3 pb-3 font-bold select-none">//</div>
+    <TopMenuLink
+      active={false}
+      text="github"
+      url="https://github.com/Slash-Go"
+    />
+    <TopMenuLink active={false} text="docs" url="https://docs.slashgo.link" />
+  </div>
+</div>
