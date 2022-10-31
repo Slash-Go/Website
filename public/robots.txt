@@ -1,4 +1,5 @@
 # Buy it, use it, break it, fix it, trash it, change it, mail, upgrade it
 
+Sitemap: https://slashgo.link/sitemap.xml
 User-agent: *
 Allow: /
