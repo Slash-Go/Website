@@ -3,14 +3,27 @@ export interface Props {
   active: boolean;
   text: string;
   url: string;
+  isMobile: boolean;
 }
 
-const { active, text, url } = Astro.props;
+const { active, text, url, isMobile } = Astro.props;
 ---
 
-<a
-  class={active
-    ? "ml-4 float-left text-black text-center p-2 text-lg rounded text-white bg-red-500"
-    : "ml-4 hover:bg-slate-200 hover:text-black float-left text-black text-center p-2 text-lg rounded"}
-  href={url}>{text}</a
->
+{
+  isMobile ? (
+    <li class="px-8 py-2 hover:text-black ">
+      <a href={url}>{text}</a>
+    </li>
+  ) : (
+    <a
+      class={
+        active
+          ? "ml-4 float-left text-black text-center p-2 text-lg rounded text-white bg-red-500"
+          : "ml-4 hover:bg-slate-200 hover:text-black float-left text-black text-center p-2 text-lg rounded"
+      }
+      href={url}
+    >
+      {text}
+    </a>
+  )
+}
