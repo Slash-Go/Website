@@ -2,25 +2,94 @@
 import TopMenuLink from "../components/TopMenuLink.astro";
 ---
 
-<div class="background-slate-200 p-2">
-  <div class="w-full flex justify-center">
+<div class="background-slate-200 p-2 md:flex-wrap flex items-center space-x-4">
+  <div class="md:w-full flex justify-center">
     <div>
       <a href="https://slashgo.link" class="float-left text-lg font-bold"
-        ><img width="300px" src="/slashgo_header.png" alt="SlashGo Logo"/>
+        ><img width="300px" src="/slashgo_header.png" alt="SlashGo Logo" />
       </a>
     </div>
   </div>
-  <div class="w-full flex justify-center">
-    <TopMenuLink active={true} text="home" url="#" />
-    <TopMenuLink active={false} text="features" url="#features" />
-    <TopMenuLink active={false} text="pricing" url="#pricing" />
-    <TopMenuLink active={false} text="downloads" url="#downloads" />
-    <div class="ml-1 pt-3 pb-3 font-bold select-none">//</div>
-    <TopMenuLink
-      active={false}
-      text="github"
-      url="https://github.com/Slash-Go"
-    />
-    <TopMenuLink active={false} text="docs" url="https://docs.slashgo.link" />
+  <div class="flex md:hidden items-center group" id="hamburger">
+    <div class="space-y-3 float-right">
+      <span class="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
+      <span class="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
+      <span class="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
+    </div>
+    <ul
+      class="hidden group-hover:block fixed bg-white border-2 right-0 list-none mt-52 z-10"
+      id="menulist"
+    >
+      <TopMenuLink active={true} text="home" url="#" isMobile={true} />
+      <TopMenuLink
+        active={false}
+        text="features"
+        url="#features"
+        isMobile={true}
+      />
+      <TopMenuLink
+        active={false}
+        text="pricing"
+        url="#pricing"
+        isMobile={true}
+      />
+      <TopMenuLink
+        active={false}
+        text="downloads"
+        url="#downloads"
+        isMobile={true}
+      />
+      <TopMenuLink
+        active={false}
+        text="github"
+        url="https://github.com/Slash-Go"
+        isMobile={true}
+      />
+      <TopMenuLink
+        active={false}
+        text="docs"
+        url="https://docs.slashgo.link"
+        isMobile={true}
+      />
+    </ul>
   </div>
 </div>
+<div class="w-full justify-center hidden lg:flex md:flex">
+  <TopMenuLink active={true} text="home" url="#" isMobile={false} />
+  <TopMenuLink
+    active={false}
+    text="features"
+    url="#features"
+    isMobile={false}
+  />
+  <TopMenuLink active={false} text="pricing" url="#pricing" isMobile={false} />
+  <TopMenuLink
+    active={false}
+    text="downloads"
+    url="#downloads"
+    isMobile={false}
+  />
+  <div class="ml-1 pt-3 pb-3 font-bold select-none">//</div>
+  <TopMenuLink
+    active={false}
+    text="github"
+    url="https://github.com/Slash-Go"
+    isMobile={false}
+  />
+  <TopMenuLink
+    active={false}
+    text="docs"
+    url="https://docs.slashgo.link"
+    isMobile={false}
+  />
+</div>
+
+<script is:inline>
+  $(document).on("mouseover", "#hamburger", function () {
+    $("#menulist").removeClass("invisible");
+  });
+
+  $(document).on("mouseout", "#hamburger", function () {
+    $("#menulist").addClass("invisible");
+  });
+</script>

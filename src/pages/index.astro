@@ -3,10 +3,14 @@ import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="SlashGo | A modern way to collaborate and share with memorable shortlinks">
-  <main class="m-auto p-4 max-w-4xl bg-gray-50 border-1 border rounded-lg">
+<Layout
+  title="SlashGo | A modern way to collaborate and share with memorable shortlinks"
+>
+  <main
+    class="m-auto p-4 max-w-4xl bg-gray-50 border-1 border rounded-lg sm:w-full xs:w-full"
+  >
     <div class="text-center p-4">
-      <div class="font-bold text-6xl">
+      <div class="font-bold lg:text-6xl text-3xl">
         <span class="transition duration-300 hero">go</span>/<span
           class="typewrite"></span><span
           class="text-slate-200 text-5xl blinking-cursor">|</span
@@ -88,12 +92,12 @@ import Layout from "../layouts/Layout.astro";
       <div class="text-center">Choose your Browser</div>
       <div class="flex justify-center mt-4">
         <img width="48px" src="/chrome.png" alt="Google Chrome" />
-        <img width="48px" src="/edge.png" alt="Microsoft Edge"/>
+        <img width="48px" src="/edge.png" alt="Microsoft Edge" />
         <img width="48px" src="/chromium.png" alt="Chromium" />
-        <img width="48px" src="/safari.png" alt="Safari"/>
-        <img width="48px" src="/brave.png" alt="Brave Browser"/>
+        <img width="48px" src="/safari.png" alt="Safari" />
+        <img width="48px" src="/brave.png" alt="Brave Browser" />
         <a href="javascript:alert('Firefox Support Coming Soon!')">
-          <img width="48px" src="/firefox.png" alt="Mozilla Firefox"/>
+          <img width="48px" src="/firefox.png" alt="Mozilla Firefox" />
         </a>
       </div>
     </div>
